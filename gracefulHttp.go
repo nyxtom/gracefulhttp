@@ -70,5 +70,9 @@ func (server *Server) ListenAndServe() error {
 }
 
 func (server *Server) Close() error {
-	return server.listener.Close()
+	var err error
+	if server.listener != nil {
+		err = server.listener.Close()
+	}
+	return err
 }
